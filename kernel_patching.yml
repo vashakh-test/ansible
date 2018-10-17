@@ -1,0 +1,20 @@
+---
+  - hosts: db
+    tasks:
+      - name: check current version of kernel
+        shell: 'uname -r'
+        register: kernel_ver
+      - name: debug kernel version
+        debug: msg="{{ kernel_ver.stdout }} is the installed version of kernel"
+
+      - name: proceeding kernel installation
+        yum:
+          name: kernel
+          state: latest
+        when: ansible_distribution == 'CentOS'
+        register: yum_update
+        
+      - name: checking kernel is upgraded or not
+        shell: kernel_latest=$(rpm -q --last kernel| head -1| awk '{print $1}' | sed 's/kernel-//'); kernel_old=$(uname -r); if [[kernel_latest !== kernel_old]]; then echo "Kernel installed"; else echo "not installed"; fi
+        register: kernetl_status
+

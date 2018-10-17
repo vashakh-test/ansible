@@ -1,0 +1,8 @@
+---
+ - hosts: all
+   tasks:
+     - name: uptime check
+       shell: uptime
+       register: time
+     - name: debug
+       debug: msg="{{ time.stdout }}"

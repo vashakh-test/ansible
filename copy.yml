@@ -1,0 +1,7 @@
+---
+ - hosts: all
+   tasks:
+     - name: test copy
+       copy:
+          src: /tmp/aa
+          dest: /mnt/

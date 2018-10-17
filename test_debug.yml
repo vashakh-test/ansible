@@ -1,0 +1,7 @@
+---
+ - hosts: all
+   tasks:
+    - shell: uptime
+      register: time
+    - name: debug uptime
+      debug: var=time

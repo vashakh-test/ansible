@@ -1,0 +1,6 @@
+---
+    - name: install apache
+        hosts: all
+        tasks:
+            - name: install apache2
+            package: name=apache2 state=present

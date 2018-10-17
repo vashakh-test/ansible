@@ -1,0 +1,8 @@
+---
+ - hosts: all
+   tasks:
+     - name: check rsyslog is running
+       shell: "ps auxf | grep rsyslog | grep -v grep"
+       register: process_stat
+     - name: debug it
+       debug: var=process_stat

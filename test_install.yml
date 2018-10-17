@@ -1,0 +1,11 @@
+---
+- hosts: all
+  gather_facts: yes
+  remote_user: root
+  tasks:
+    - name: install the latest version of httpd
+      yum: name="{{ item }}" state=latest disable_gpg_check=yes update_cache=yes
+      with_items:
+      - httpd
+      when: ansible_os_family == "Centos"
+      become: true

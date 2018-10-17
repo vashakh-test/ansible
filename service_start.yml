@@ -1,0 +1,8 @@
+---
+ - hosts: all
+   tasks:
+#    - name: check service
+ -     service:
+        name: httpd
+        state: started
+

@@ -1,0 +1,10 @@
+--- 
+- 
+  hosts: all
+  tasks: 
+    - 
+      content: "{{ welcome }}"
+      copy: "dest:/etc/motd1"
+      name: sample
+  user: root
+
