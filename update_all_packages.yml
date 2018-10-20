@@ -1,0 +1,13 @@
+---
+ - hosts: all
+   tasks:
+   - name: update all packages 
+     yum:
+       name: "*"
+       state: latest
+#update all packages except httpd and kernel
+       exclude: "{{ item  }}"
+     with_items:
+        - httpd
+        - kernel 
+       

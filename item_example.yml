@@ -1,0 +1,11 @@
+---
+ - hosts: all
+   tasks:
+   - name: install http,php and mysql packages
+     yum:
+       name: "{{ item  }}"
+       state: present
+     with_items:
+          - httpd
+          - php
+          - mysql

@@ -1,0 +1,9 @@
+---
+ - hosts: db
+   tasks:
+    - name: create directory
+      file:
+       state: directory
+       path: /tmp/test/vaish
+       owner: vaishakh
+       group: vaishakh

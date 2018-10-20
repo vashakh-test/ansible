@@ -1,0 +1,8 @@
+---
+ - hosts: all
+   tasks: 
+   - name: creating file with content
+     copy:
+      dest: /tmp/cat.txt
+      content: |
+         Hi this is a test file
