@@ -2,25 +2,27 @@
   - hosts: db
     tasks:
       - name: check current version of kernel
-        shell: 'uname -r'
+        shell: uname -r
         register: kernel_ver
       - name: debug kernel version
-        debug: msg="{{ kernel_ver.stdout }} is the installed version of kernel"
+        debug: msg="{{kernel_ver.stdout}} is the installed version of kernel"
 
-      - name: proceeding kernel installation
-        yum:
-          name: kernel
-          state: latest
-        when: ansible_distribution == 'CentOS'
-        register: yum_update
+#      - name: proceeding kernel installation
+#        yum:
+#          name: kernel
+#          state: latest
+#        when: ansible_distribution == 'CentOS'
+#        register: yum_update
         
       - name: checking kernel is upgraded or not
-        shell: kernel_latest=$(rpm -q --last kernel| head -1| awk '{print $1}' | sed 's/kernel-//'); kernel_old=$(uname -r); if [[kernel_latest !== kernel_old]]; then echo "Kernel installed"; else echo "not installed"; fi
+        shell: kernel_latest=$(rpm -q --last kernel| head -1| awk '{print $1}' | sed 's/kernel-//'); kernel_old=$(uname -r); if [[kernel_latest != kernel_old]]; then echo "Kernel installed"; else echo "not installed"; fi
 
 #Generally playbooks will stop executing any more steps on a host that has a task fail. Sometimes, though, you want to continue on 
         ignore_errors: yes 
         register: kernetl_status
-       
+      - name: kernel version
+        debug: var=kernetl_status   
+#       
       - name: reboot system when new kernel installed
 #        command: shutdown -r 
         command: uname -r 

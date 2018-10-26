@@ -5,3 +5,5 @@
        copy:
           src: /tmp/aa
           dest: /mnt/
+# If the remote file exists and if it is different from the file which is copied, then a new file will be created. 
+          backup: yes

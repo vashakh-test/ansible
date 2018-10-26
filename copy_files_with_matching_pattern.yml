@@ -1,0 +1,10 @@
+---
+  - hosts: all
+    tasks:
+     - name: copy files
+       copy:
+         src: "{{ item }}"
+         dest: /mnt
+#If you need to copy all the files in a directory that matches a wildcard character, then you can use with_fileglob.
+       with_fileglob:
+         - /tmp/file-*

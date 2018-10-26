@@ -1,0 +1,11 @@
+---
+# tasks file for roles/apache
+- name: install apache
+  yum:
+     name: httpd
+     state: present
+- name: copy config files
+  copy:
+     src: index.html
+     dest: /var/www/html/   
+#import_tasks: install_htpd.yml

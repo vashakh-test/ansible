@@ -1,0 +1,16 @@
+---
+ - hosts: db
+   tasks:
+   - name: testing file existence
+     stat:
+        path: /tmp/test.txt
+     register: file
+   - name: debug it
+#     debug: "var=file"  
+     debug: "msg={{file.stat.exists}}"
+
+   - name: create file
+     file:
+       dest: /tmp/test.txt
+       state: touch
+     when: file.stat.exists == false   

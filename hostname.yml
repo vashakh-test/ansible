@@ -1,0 +1,6 @@
+---
+ - hosts: "{{ ansible_hostname  }}"
+   tasks:
+     - name: hello
+       command: w
+    
