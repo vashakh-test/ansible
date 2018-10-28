@@ -1,0 +1,22 @@
+---
+# tasks file for common
+# copy new resolve.conf
+ - name : copy dns file
+   template:
+    src: resolv.conf
+    dest: /etc/resolv.conf
+   tags: dns
+
+#install ntp
+ - name: install NTP
+   yum:
+    name: ntp
+    state: installed
+   tags: ntp
+
+ - name: copy ntp file
+   template:
+    src: ntp.conf
+    dest: /etc/ntp.conf
+   tags: ntp
+   notify: restart ntp service # it is an handler. So should match with handler name. check handler directory
