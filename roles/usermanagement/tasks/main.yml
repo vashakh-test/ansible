@@ -1,0 +1,33 @@
+---
+# tasks file for roles/usermanagement
+     - name: creating Group
+       group:
+          name: "{{ item }}"
+          state: present 
+       with_items:
+              - testgroup1
+              - testgroup2
+       tags: create_group
+
+     - name: Add users
+       user:
+         name: "{{ item }}"
+         group: testgroup1
+         shell: /bin/sh 
+       with_items:
+          - testuser1
+          - testuser2
+       tags: create_user 
+
+     - name: Generate SSH Key
+       user:
+         generate_ssh_key: yes
+         name: testuser1
+         ssh_key_bits: 4096
+       tags: sshkey 
+    
+     - name: Copy SSH Key to remote user
+       authorized_key:
+         user: testuser1
+         key: "{{lookup('file','/home/testuser1/.ssh/id_rsa.pub')}}"
+       
