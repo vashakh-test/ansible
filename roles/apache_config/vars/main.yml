@@ -1,0 +1,6 @@
+---
+# vars file for apache_config
+# 
+  apache_vhosts2:
+         - {servername: "vaishakh.com", documentroot: "/var/www/vaishakh"}
+         - {servername: "neutron.com" , documentroot: "/var/www/neutron"}

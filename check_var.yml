@@ -1,0 +1,9 @@
+---
+ - hosts: localhost
+   vars:
+# date command will be executed in shell module
+     var_time1: "var= {{lookup('pipe','date')}}"
+   tasks:
+     - debug: var=var_time1
+     - command: sleep 2
+     - debug: var=var_time1  

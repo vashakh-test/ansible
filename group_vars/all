@@ -2,3 +2,5 @@
 
 dnserver: 8.8.8.8
 ntpserver: 127.0.0.1
+hostname: vaishakh.com
+hostname2: neutron.com

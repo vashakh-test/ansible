@@ -1,0 +1,9 @@
+---
+ - name: who am i
+   hosts: all
+   tasks:
+    - name: who am i
+      command: whoami
+      register: who
+    - name: debug it
+      debug: var=who.stdout

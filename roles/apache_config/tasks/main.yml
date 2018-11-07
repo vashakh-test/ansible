@@ -1,0 +1,16 @@
+---
+# tasks file for apache_config
+# copy template vhost.conf file to apache config location
+ - name: copy config file
+   template:
+     src: vhosts.conf.j2
+     dest: /etc/httpd/conf.d/vhosts.conf
+   notify: restart apache
+
+ - name: create document root
+   file:
+     path: /var/www/{{item}}
+     state: directory
+   with_items:
+     - vaishakh
+     - neutron

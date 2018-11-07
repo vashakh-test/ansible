@@ -1,0 +1,10 @@
+---
+ - name: Sample set_facts
+   tasks:
+   - name: set a fact
+     set_fact: 
+         our_fact: vaishakh
+ - name: debug it
+   debug: var=our_fact
+
+   

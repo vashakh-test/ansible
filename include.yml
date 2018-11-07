@@ -1,0 +1,7 @@
+---
+#[DEPRECATION WARNING]: 'include' for playbook includes. You should use 'import_playbook' instead. This feature will be removed in
+#version 2.8.
+ - include: hostname.yml
+ - import_playbook: hostname.yml
+# - include_tasks: whoami.yml
+# - import_tasks: whoami.yml

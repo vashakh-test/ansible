@@ -1,6 +1,7 @@
 ---
- - hosts: "{{ ansible_hostname  }}"
+ - hosts: localhost
    tasks:
      - name: hello
        command: w
-    
+       register: hostname
+     - debug: msg=hostname

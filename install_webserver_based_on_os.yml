@@ -1,0 +1,14 @@
+---
+ - hosts: all
+   tasks: 
+    - name: Install Apache Webserver on Debian
+      package:
+        name: apache2
+        state: installed
+      when: ansible_distribution == "Debian"
+        
+    - name:  Install Apache Webserver on Centos
+      when: ansible_distribution == "CentOS"
+      package:
+       name: httpd
+       state: installed

@@ -1,0 +1,8 @@
+---
+ - hosts: localhost
+   tasks:
+    - set_fact:
+       fact_time: "Fact: {{lookup('pipe','date')}}"
+    - debug: var=fact_time  
+    - shell: sleep 2
+    - debug: var=fact_time

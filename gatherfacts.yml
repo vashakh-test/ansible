@@ -1,0 +1,6 @@
+---
+ - hosts: all
+   gather_facts: true
+   tasks:
+    - name: debug it
+      debug: "msg={{ ansible_facts['nodename'] }}"
