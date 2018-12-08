@@ -1,0 +1,4 @@
+---
+ - name: facts
+   hosts: localhost
+   debug: var=ansible_facts

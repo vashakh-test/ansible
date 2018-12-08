@@ -1,0 +1,6 @@
+---
+# vars file for apache_setup
+
+    httpd_packages:
+       - httpd
+       - mod_wsg

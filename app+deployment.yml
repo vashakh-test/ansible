@@ -1,0 +1,5 @@
+---
+  - name: Start App deployment
+    hosts: localhost
+    roles: 
+      -  app_deployment

@@ -9,8 +9,19 @@
 
  - name: create document root
    file:
-     path: /var/www/{{item}}
+     path: /var/www/html/{{item}}
      state: directory
    with_items:
      - vaishakh
      - neutron
+
+ - name: Copy neutron conf file
+   template:
+      src: neutron.html.j2
+      dest: /var/www/html/neutron/
+
+ - name: Copy vaishakh conf file
+   template:
+      src: vaishakh.html.j2
+      dest: /var/www/html/vaishakh/
+ 

@@ -1,0 +1,23 @@
+---
+# tasks file for app_deployment
+ - name: Maintenance Window
+#   pre_task:
+    - debug: "msg={{ansible_date_time.time}}"
+
+ - name: Dovecot installation
+   yum:
+    - name: dovecot
+      state: present
+   when: "ansible_os_family" == "Redhat" 
+   notify: dovecot_restart
+   tags: dovecot
+  
+ - name: Haproxy Installation
+   yum:
+    - name: haproxy
+      state: installed
+   when: "ansible_os_family" == "Redhat"
+   notify: haproxy_restart
+   tags: haproxy
+
+

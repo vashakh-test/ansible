@@ -1,0 +1,12 @@
+---
+# handlers file for app_deployment
+ - name: dovecot_restart
+   service:
+     - name: dovecot
+       state: restarted
+  
+ - name: haproxy_restart
+   service:
+     - name: haproxy
+       state: restarted
+
