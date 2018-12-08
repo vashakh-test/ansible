@@ -1,6 +1,6 @@
 ---
 # tasks file for apache_setup
-  - hosts: localhost
+  - name: apache setup
     yum:
       - name: {{ item  }}  #You are telling Ansible that this will expand into a list item like httpd and mod_wsgi
         state: present
@@ -8,25 +8,25 @@
     notify: restart apache   
 
 
-  - name: create site-enabled directory
-    file:
-       name: /etc/httpd/conf/sites-enabled
-       state: directory
+#  - name: create site-enabled directory
+#    file:
+#       name: /etc/httpd/conf/sites-enabled
+#       state: directory
 
-  - name: copy httpd.conf
-    template:
-       dest: /etc/httpd/conf/sites-enabled
-       src: httpd.conf.j2
-    notify: restart apache  
+#  - name: copy httpd.conf
+#    template:
+#       dest: /etc/httpd/conf/sites-enabled
+#       src: httpd.conf.j2
+#    notify: restart apache  
 
-   - name: copy index.html
-     template:
-       src: index.html.j2
-       dest: /var/www/html/index.html
+#   - name: copy index.html
+#     template:
+#       src: index.html.j2
+#       dest: /var/www/html/index.html
   
-   - name: start httpd
-     service: 
-       name:  httpd
-       state: started
-       enabled: yes
+#   - name: start httpd
+#     service: 
+#       name:  httpd
+#       state: started
+#       enabled: yes
 
