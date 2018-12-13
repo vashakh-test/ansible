@@ -1,0 +1,15 @@
+---
+  - hosts: localhost
+    tasks:
+    - name: list tmp
+      command: ls /tmp
+      register: output
+    - debug: 
+        msg: "{{ output }}"  
+    - name: check test.txt is exist
+      assert:
+        that:
+         - "'test.txt' in output.stdout_lines"   
+    tags: file_exist
+
+
