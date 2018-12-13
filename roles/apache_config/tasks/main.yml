@@ -6,6 +6,7 @@
      src: vhosts.conf.j2
      dest: /etc/httpd/conf.d/vhosts.conf
    notify: restart apache
+   tag: copy_conf
 
  - name: create document root
    file:
@@ -15,13 +16,20 @@
      - vaishakh
      - neutron
 
- - name: Copy neutron conf file
-   template:
-      src: neutron.html.j2
-      dest: /var/www/html/neutron/
+# - name: Copy neutron conf file
+#   template:
+#      src: neutron.html.j2
+#      dest: /var/www/html/neutron/
 
- - name: Copy vaishakh conf file
+# - name: Copy vaishakh conf file
+#   template:
+#      src: vaishakh.html.j2
+#      dest: /var/www/html/vaishakh/
+ - name: Copy html files
    template:
-      src: vaishakh.html.j2
-      dest: /var/www/html/vaishakh/
- 
+     src: '{{item.file}}'
+     dest: '{{item.loc}}'
+   with_items:
+     - { file: 'neutron.html.j2' , loc: '/var/www/html/neutron/' }
+     - { file: 'vaishakh.html.j2' , loc: '/var/www/html/vaishakh/' } 
+

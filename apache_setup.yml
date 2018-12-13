@@ -1,4 +1,4 @@
 ---
-  - name: apache setup
-    roles:
-     - apache_setup
+   - name: apache setup
+     roles:
+      - apache_setup

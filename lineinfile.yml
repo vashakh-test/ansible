@@ -1,0 +1,11 @@
+---
+ - name: Ex. line in file module
+   hosts: openstack
+   tasks:
+   - name: change hosts file
+     lineinfile:
+       path: /etc/hosts
+       regexp: '^192.168.225.169'
+       line: 192.168.225.169 neutron neutron.vaishakh.com
+       
+   

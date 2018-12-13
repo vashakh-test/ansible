@@ -1,0 +1,14 @@
+---
+  - hosts: '{{ target_grp }}'
+    tasks:
+     - name: check httpd is running 
+       service:
+         name: httpd
+         state: started
+    
+     - name: check port status
+       wait_for:
+        - host: '{{ inventory_hostname }}'
+          port: 80
+          state: started
+ 

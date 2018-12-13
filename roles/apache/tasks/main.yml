@@ -25,3 +25,9 @@
     src: index1.html.j2
     dest: /var/www/html/index1.html
   notify: restart apache
+  tag: copy_file
+
+ 
+
+
+
